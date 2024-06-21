@@ -20,7 +20,7 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Smurf',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
