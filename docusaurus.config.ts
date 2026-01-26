@@ -7,7 +7,7 @@ const config: Config = {
   tagline: 'develops',
   favicon: 'img/favicon.ico',
 
-  url: 'https://martgra.github.io/',
+  url: 'https://gran.dev',
   baseUrl: '/',
 
 
