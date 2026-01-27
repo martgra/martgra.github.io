@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 
-import { Section } from "@/components/layout/Section";
 import { TerminalPrompt } from "@/components/terminal/TerminalPrompt";
 import { portfolio } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
@@ -18,16 +17,23 @@ const tagColorMap: Record<string, string> = {
 
 export function Projects() {
   return (
-    <Section id="projects" className="scroll-mt-20">
-      <TerminalPrompt command={portfolio.projects.command} />
+    <section id="projects" className="scroll-mt-20">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <TerminalPrompt command={portfolio.projects.command} />
+      </motion.div>
       <div className="space-y-4">
         {portfolio.projects.items.map((project, index) => (
           <motion.div
             key={project.name}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.08 }}
+            viewport={{ once: true, margin: "-100px" }}
             className="group relative border border-gray-800 bg-gray-900/30 hover:bg-gray-900 hover:border-green-500/50 transition-all duration-300 p-4 rounded overflow-hidden"
           >
             <div className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -53,6 +59,6 @@ export function Projects() {
           </motion.div>
         ))}
       </div>
-    </Section>
+    </section>
   );
 }

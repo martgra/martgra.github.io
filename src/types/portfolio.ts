@@ -4,6 +4,24 @@ export interface PortfolioMeta {
   description: string;
 }
 
+export interface HeaderSection {
+  prompt: {
+    user: string;
+    host: string;
+    directory: string;
+    command: string;
+  };
+}
+
+export interface HeroSection {
+  comment: string;
+}
+
+export interface FooterSection {
+  exitMessage: string;
+  copyrightName: string;
+}
+
 export interface AboutSection {
   command: string;
   paragraphs: string[];
@@ -45,6 +63,7 @@ export interface ContactSection {
   github?: string;
   linkedin?: string;
   twitter?: string;
+  bluesky?: string;
 }
 
 export interface NavItem {
@@ -54,9 +73,12 @@ export interface NavItem {
 
 export interface Portfolio {
   meta: PortfolioMeta;
+  header: HeaderSection;
+  hero: HeroSection;
   about: AboutSection;
   skills: SkillsSection;
   projects: ProjectsSection;
   contact: ContactSection;
+  footer: FooterSection;
   nav: NavItem[];
 }

@@ -3,17 +3,30 @@ import type { Portfolio } from "@/types/portfolio";
 export const portfolio: Portfolio = {
   meta: {
     name: "Martin Gran",
-    tagline: "Hello, World. I build things for the web.",
+    tagline: "I build developer tools and data-driven products.",
     description:
-      "Full-stack developer passionate about creating elegant solutions to complex problems.",
+      "Norwegian developer at heart - biological implementation of chatGPT. I ship AI-assisted tooling, legal-data pipelines, and modern Next.js apps.",
+  },
+
+  header: {
+    prompt: {
+      user: "guest",
+      host: "gran.dev",
+      directory: "~",
+      command: "./welcome.sh",
+    },
+  },
+
+  hero: {
+    comment: "// Initializing interface...",
   },
 
   about: {
-    command: "cat about_me.txt",
+    command: "whoami",
     paragraphs: [
-      "Hello! I'm a creative developer with a passion for building exceptional digital experiences. I specialize in modern web technologies and enjoy the challenge of turning complex problems into simple, beautiful, and intuitive solutions.",
-      "When I'm not coding, you can find me exploring new technologies, contributing to open source projects, or enjoying a good cup of coffee while contemplating the next big idea.",
-      "I believe in writing clean, maintainable code and creating user experiences that delight. Let's build something amazing together!",
+      "Hi — I’m Martin Gran. I’m a Norway-based developer (Sande) who likes building pragmatic software that removes friction from real workflows.",
+      "Lately I’ve been working on DOPE: an AI-powered CLI that scans code + docs and suggests (or applies) documentation updates based on changes — designed to work with either OpenAI or Azure OpenAI.",
+      "I also build products and pipelines rooted in Norwegian data: from salary/inflation tooling (Kjøpekraft) to Lovdata-based legal document syncing and vector search pipelines.",
     ],
   },
 
@@ -24,35 +37,50 @@ export const portfolio: Portfolio = {
         title: "Frontend",
         color: "purple",
         items: [
-          "React / Next.js",
+          "Next.js (App Router)",
+          "React",
           "TypeScript",
           "Tailwind CSS",
-          "Framer Motion",
-          "Vue.js",
-          "Three.js",
+          "Chart.js",
+          "SWR (client caching)",
         ],
       },
       {
-        title: "Backend",
+        title: "Backend & Data",
         color: "blue",
         items: [
-          "Node.js / Express",
-          "Python / Django",
-          "PostgreSQL",
-          "MongoDB",
-          "REST APIs",
-          "GraphQL",
+          "Python (incl. 3.13)",
+          "CLI tooling",
+          "Lovdata ingestion & change detection (hash-based)",
+          "Vector search pipelines (parse → chunk → embed → index)",
+          "OpenAI + Azure OpenAI integrations",
         ],
       },
       {
-        title: "DevOps",
+        title: "DevEx & Automation",
         color: "green",
-        items: ["Docker", "Kubernetes", "GitHub Actions", "AWS", "Vercel", "Nginx"],
+        items: [
+          "GitHub Actions (CI/CD)",
+          "Dev Containers",
+          "Docker-based development flows",
+          "uv (Python dependency management)",
+          "Bun (TS runtime/PM) where it fits",
+        ],
       },
       {
-        title: "Tools",
+        title: "Quality Tooling",
         color: "yellow",
-        items: ["Git", "VS Code", "Figma", "Postman", "Linux", "Vim"],
+        items: [
+          "Ruff",
+          "Pylint",
+          "Deptry",
+          "Vulture",
+          "detect-secrets",
+          "Prek / pre-commit style hooks",
+          "ESLint + Prettier",
+          "Knip (unused code detection)",
+          "Vitest + Playwright",
+        ],
       },
     ],
   },
@@ -61,51 +89,91 @@ export const portfolio: Portfolio = {
     command: "ls -la ./projects/",
     items: [
       {
-        name: "Project_Alpha",
-        meta: "drwxr-xr-x  admin  4.0K  Oct 12 14:30",
+        name: "dope",
+        meta: "drwxr-xr-x  martin  4.0K  Dec 02 2025",
         description:
-          "A minimalist task management dashboard built with React and Firebase. Features real-time sync, drag-and-drop interface, and PWA support.",
+          "AI-powered CLI for scanning code + documentation, generating structured summaries, and suggesting/applying documentation updates based on code changes. Built for OpenAI and Azure OpenAI workflows (Python 3.13).",
         tags: [
-          { label: "React", color: "blue" },
-          { label: "Firebase", color: "yellow" },
+          { label: "Python", color: "blue" },
+          { label: "CLI", color: "gray" },
+          { label: "OpenAI/Azure", color: "green" },
+        ],
+        github: "https://github.com/martgra/dope",
+      },
+      {
+        name: "kjopekraft",
+        meta: "drwxr-xr-x  martin  4.0K  Jan 07 2026",
+        description:
+          "Next.js app for Norwegian users to track salary development, compare against inflation, and generate negotiation material using SSB-backed framing (OpenAI key optional).",
+        tags: [
+          { label: "Next.js", color: "purple" },
+          { label: "TypeScript", color: "blue" },
           { label: "Tailwind", color: "pink" },
         ],
-        url: "https://example.com",
-        github: "https://github.com/martgra/project-alpha",
+        github: "https://github.com/martgra/kjopekraft",
       },
       {
-        name: "CodeSnippets_Manager",
-        meta: "drwxr-xr-x  admin  2.8K  Sep 28 09:15",
+        name: "lovlig",
+        meta: "drwxr-xr-x  martin  4.0K  Nov 28 2025",
         description:
-          "A terminal-based code snippet manager with syntax highlighting, tagging system, and GitHub Gist integration. Built with TypeScript and Ink.",
+          "Keeps Norwegian legal datasets in sync from Lovdata by downloading bulk datasets, extracting archives, and detecting file-level changes via hashing (xxHash) to report added/modified/removed documents.",
+        tags: [
+          { label: "Python", color: "blue" },
+          { label: "Lovdata", color: "green" },
+          { label: "Data", color: "gray" },
+        ],
+        github: "https://github.com/martgra/lovlig",
+      },
+      {
+        name: "lovdata-pipeline",
+        meta: "drwxr-xr-x  martin  4.0K  Nov 28 2025",
+        description:
+          "A simple pipeline for processing Norwegian legal documents into a searchable vector database, running a stepwise flow (parse → chunk → embed → index) with state tracking of changed files.",
+        tags: [
+          { label: "Python", color: "blue" },
+          { label: "Embeddings", color: "pink" },
+          { label: "Vector search", color: "purple" },
+        ],
+        github: "https://github.com/martgra/lovdata-pipeline",
+      },
+      {
+        name: "python_template",
+        meta: "drwxr-xr-x  martin  4.0K  Jan 23 2026",
+        description:
+          "Opinionated Python project template: uv-based dependency management, Ruff/Pylint/Deptry/Vulture, secret scanning, Prek hooks, GitHub Actions, and Dev Container support for a reproducible setup.",
+        tags: [
+          { label: "Python", color: "blue" },
+          { label: "DevEx", color: "green" },
+          { label: "CI", color: "gray" },
+        ],
+        github: "https://github.com/martgra/python_template",
+      },
+      {
+        name: "typescript_template",
+        meta: "drwxr-xr-x  martin  4.0K  Oct 28 2025",
+        description:
+          "TypeScript project template with Bun, ESLint/Prettier, Knip, Husky hooks, secret detection, GitHub Actions CI/CD, and a Dev Container for consistent development environments.",
         tags: [
           { label: "TypeScript", color: "blue" },
-          { label: "Node.js", color: "green" },
-          { label: "CLI", color: "gray" },
+          { label: "Bun", color: "yellow" },
+          { label: "Template", color: "gray" },
         ],
-        github: "https://github.com/martgra/snippets",
-      },
-      {
-        name: "Portfolio_v2",
-        meta: "drwxr-xr-x  admin  1.2K  Nov 05 16:45",
-        description:
-          "This very portfolio you're looking at! A terminal-themed portfolio site with typewriter effects, scroll animations, and full accessibility support.",
-        tags: [
-          { label: "React", color: "blue" },
-          { label: "Vite", color: "purple" },
-          { label: "Framer Motion", color: "pink" },
-        ],
-        github: "https://github.com/martgra/portfolio",
+        github: "https://github.com/martgra/typescript_template",
       },
     ],
   },
 
   contact: {
-    command: "./send_message.sh",
-    email: "martgra@example.com",
+    command: "ls -la ./socials",
+    email: "martin@gran.dev",
     github: "https://github.com/martgra",
-    linkedin: "https://linkedin.com/in/martingran",
-    twitter: "https://twitter.com/martgra",
+    linkedin: "https://www.linkedin.com/in/martin-gran/",
+    bluesky: "https://bsky.app/profile/martin-gran.bsky.social",
+  },
+
+  footer: {
+    exitMessage: "Process finished with exit code 0",
+    copyrightName: "Terminal Portfolio",
   },
 
   nav: [
