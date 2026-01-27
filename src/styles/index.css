@@ -29,10 +29,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: #030712;
   }
 
   body {
     font-family: "Fira Code", monospace;
+    background-color: #030712;
   }
 
   /* Custom scrollbar */
