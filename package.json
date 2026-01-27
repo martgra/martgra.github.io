@@ -1,47 +1,69 @@
 {
-  "name": "docusaurus-test",
-  "version": "0.0.0",
+  "name": "martgra-landing-page",
+  "version": "1.0.0",
+  "description": "Landing page for Martin Gran",
+  "type": "module",
   "private": true,
+  "author": "Martin Gran <martgra@gmail.com>",
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "start": "vite",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\"",
+    "secretlint": "secretlint",
+    "knip": "knip",
+    "knip:production": "knip --production",
+    "prepare": "husky"
   },
-  "dependencies": {
-    "@docusaurus/core": "3.4.0",
-    "@docusaurus/preset-classic": "3.4.0",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.0.0",
-    "prism-react-renderer": "^2.3.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
-  },
-  "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.4.0",
-    "@docusaurus/tsconfig": "3.4.0",
-    "@docusaurus/types": "3.4.0",
-    "typescript": "~5.2.2"
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
     ],
-    "development": [
-      "last 3 chrome version",
-      "last 3 firefox version",
-      "last 5 safari version"
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
     ]
   },
-  "engines": {
-    "node": ">=18.0"
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "framer-motion": "^11.11.17",
+    "lucide-react": "^0.469.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.5",
+    "class-variance-authority": "^0.7.1",
+    "@radix-ui/react-collapsible": "^1.1.2",
+    "@radix-ui/react-slot": "^1.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "@types/node": "^24.9.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
+    "@secretlint/secretlint-rule-preset-recommend": "^11.2.5",
+    "secretlint": "^11.2.5",
+    "knip": "^5.33.3",
+    "prettier": "^3.0.0",
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.46.2",
+    "vite": "^6.0.7"
   }
 }
