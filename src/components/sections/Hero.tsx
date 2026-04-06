@@ -2,10 +2,16 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 import { TypewriterText } from "@/components/terminal/TypewriterText";
-import { portfolio } from "@/data/portfolio";
+import { usePortfolio } from "@/context/LanguageContext";
 
-export function Hero() {
+interface HeroProps {
+  onComplete?: () => void;
+}
+
+export function Hero({ onComplete }: HeroProps) {
+  const portfolio = usePortfolio();
   const [showSubtext, setShowSubtext] = useState(false);
+  const [showNow, setShowNow] = useState(false);
 
   return (
     <section id="hero" className="min-h-[200px]">
@@ -29,9 +35,23 @@ export function Hero() {
         initial={{ opacity: 0, x: -20 }}
         animate={showSubtext ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
         transition={{ duration: 0.5 }}
+        onAnimationComplete={() => {
+          if (showSubtext) setShowNow(true);
+        }}
         className="text-gray-400 max-w-2xl leading-relaxed border-l-2 border-gray-800 pl-4 italic"
       >
         &gt; {portfolio.meta.description}
+      </motion.p>
+      <motion.p
+        initial={{ opacity: 0, x: -20 }}
+        animate={showNow ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+        transition={{ duration: 0.5 }}
+        onAnimationComplete={() => {
+          if (showNow) onComplete?.();
+        }}
+        className="text-green-400/70 max-w-2xl leading-relaxed border-l-2 border-green-800/50 pl-4 mt-3 text-sm"
+      >
+        &#x25B6; {portfolio.meta.now}
       </motion.p>
     </section>
   );

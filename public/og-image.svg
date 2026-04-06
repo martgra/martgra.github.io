@@ -1,0 +1,31 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#030712"/>
+  <rect x="40" y="40" width="1120" height="550" rx="12" fill="#111827" stroke="#1f2937" stroke-width="2"/>
+  <!-- Window dots -->
+  <circle cx="80" cy="72" r="8" fill="#ef4444"/>
+  <circle cx="108" cy="72" r="8" fill="#eab308"/>
+  <circle cx="136" cy="72" r="8" fill="#22c55e"/>
+  <!-- Prompt -->
+  <text x="80" y="150" font-family="monospace" font-size="24" fill="#60a5fa">guest@gran.dev</text>
+  <text x="420" y="150" font-family="monospace" font-size="24" fill="#d1d5db">:~$ ./welcome.sh</text>
+  <!-- Name -->
+  <text x="80" y="240" font-family="monospace" font-size="56" font-weight="bold" fill="#f3f4f6">Martin Gran</text>
+  <!-- Title -->
+  <text x="80" y="310" font-family="monospace" font-size="36" fill="#22c55e">AI/ML Tech Lead</text>
+  <!-- Description -->
+  <text x="80" y="380" font-family="monospace" font-size="20" fill="#9ca3af">Taking complex AI and machine learning solutions</text>
+  <text x="80" y="410" font-family="monospace" font-size="20" fill="#9ca3af">from idea and prototype to production.</text>
+  <!-- Tags -->
+  <rect x="80" y="460" width="80" height="30" rx="4" fill="#1f2937"/>
+  <text x="95" y="481" font-family="monospace" font-size="14" fill="#86efac">RAG</text>
+  <rect x="175" y="460" width="120" height="30" rx="4" fill="#1f2937"/>
+  <text x="190" y="481" font-family="monospace" font-size="14" fill="#86efac">Agents</text>
+  <rect x="310" y="460" width="100" height="30" rx="4" fill="#1f2937"/>
+  <text x="325" y="481" font-family="monospace" font-size="14" fill="#86efac">Python</text>
+  <rect x="425" y="460" width="110" height="30" rx="4" fill="#1f2937"/>
+  <text x="440" y="481" font-family="monospace" font-size="14" fill="#86efac">Next.js</text>
+  <rect x="550" y="460" width="140" height="30" rx="4" fill="#1f2937"/>
+  <text x="565" y="481" font-family="monospace" font-size="14" fill="#86efac">FastAPI</text>
+  <!-- URL -->
+  <text x="80" y="545" font-family="monospace" font-size="18" fill="#4b5563">gran.dev</text>
+</svg>

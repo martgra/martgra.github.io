@@ -78,6 +78,29 @@
   animation: cursor-blink 1s step-end infinite;
 }
 
+/* 17. mai mode overrides */
+.mai17-mode .text-green-400 {
+  color: #ef4444 !important;
+}
+.mai17-mode .text-green-500 {
+  color: #dc2626 !important;
+}
+.mai17-mode .border-green-500\/30 {
+  border-color: rgb(239 68 68 / 0.3) !important;
+}
+.mai17-mode .hover\:text-green-400:hover {
+  color: #ef4444 !important;
+}
+.mai17-mode .bg-green-500\/20 {
+  background-color: rgb(239 68 68 / 0.2) !important;
+}
+.mai17-mode .text-blue-400 {
+  color: #ffffff !important;
+}
+.mai17-mode .text-purple-400 {
+  color: #3b82f6 !important;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -90,5 +113,213 @@
 
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* ===================== */
+/* Print CV stylesheet   */
+/* ===================== */
+
+/* Hide the print CV on screen */
+.print-cv {
+  display: none;
+}
+
+@media print {
+  /* Page setup */
+  @page {
+    margin: 1.8cm 2cm;
+    size: A4;
+  }
+
+  /* Reset everything */
+  html, body {
+    background: white !important;
+    color: #1a1a1a !important;
+    font-size: 10.5px !important;
+    font-family: "Fira Code", "Consolas", monospace !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Hide the entire terminal UI */
+  .screen-only {
+    display: none !important;
+  }
+
+  /* Show the print CV */
+  .print-cv {
+    display: block !important;
+    color: #1a1a1a;
+  }
+
+  /* Hide fixed/floating elements */
+  .fixed, canvas {
+    display: none !important;
+  }
+
+  /* ---- CV Layout ---- */
+
+  .print-cv-header {
+    text-align: center;
+    border-bottom: 2px solid #333;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+
+  .print-cv-header h1 {
+    font-size: 24px !important;
+    font-weight: 700;
+    margin: 0 0 2px;
+    color: #000 !important;
+  }
+
+  .print-cv-title {
+    font-size: 14px !important;
+    color: #444 !important;
+    margin: 0 0 8px;
+  }
+
+  .print-cv-contact-row {
+    font-size: 9.5px !important;
+    color: #555 !important;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .print-cv-contact-row span::before {
+    content: "· ";
+    color: #aaa;
+  }
+
+  .print-cv-contact-row span:first-child::before {
+    content: "";
+  }
+
+  .print-cv-languages {
+    font-size: 9px !important;
+    color: #666 !important;
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* Section headings */
+  .print-cv h2 {
+    font-size: 13px !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+    margin: 16px 0 10px;
+    color: #000 !important;
+  }
+
+  /* Paragraphs */
+  .print-cv p {
+    margin: 0 0 6px;
+    color: #333 !important;
+  }
+
+  /* Experience entries */
+  .print-cv-entry {
+    margin-bottom: 14px;
+    break-inside: avoid;
+  }
+
+  .print-cv-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .print-cv-entry-header strong {
+    color: #000 !important;
+    font-size: 11px !important;
+  }
+
+  .print-cv-entry-header em {
+    color: #555 !important;
+    font-size: 10px !important;
+    font-style: italic;
+  }
+
+  .print-cv-period {
+    font-size: 9.5px !important;
+    color: #666 !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  .print-cv-desc {
+    font-size: 10px !important;
+    color: #444 !important;
+    margin: 4px 0 6px;
+  }
+
+  .print-cv ul {
+    margin: 4px 0 6px 16px;
+    padding: 0;
+  }
+
+  .print-cv li {
+    font-size: 10px !important;
+    color: #333 !important;
+    margin-bottom: 2px;
+    list-style-type: "▸ ";
+  }
+
+  .print-cv-tech {
+    font-size: 9px !important;
+    color: #666 !important;
+    margin-top: 4px;
+  }
+
+  /* Skills */
+  .print-cv-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .print-cv-skill-group {
+    font-size: 10px !important;
+    color: #333 !important;
+  }
+
+  .print-cv-skill-group strong {
+    color: #000 !important;
+  }
+
+  /* Projects */
+  .print-cv-project {
+    margin-bottom: 6px;
+    font-size: 10px !important;
+  }
+
+  .print-cv-project strong {
+    color: #000 !important;
+  }
+
+  .print-cv-url {
+    font-size: 9px !important;
+    color: #666 !important;
+  }
+
+  /* Employer context */
+  .print-cv-employer {
+    font-size: 10px !important;
+    color: #555 !important;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  /* Education */
+  .print-cv-edu {
+    margin-bottom: 4px;
   }
 }

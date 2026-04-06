@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 import { TerminalPrompt } from "@/components/terminal/TerminalPrompt";
-import { portfolio } from "@/data/portfolio";
+import { usePortfolio } from "@/context/LanguageContext";
 import { cn } from "@/lib/utils";
 
 const titleColorMap: Record<string, string> = {
@@ -13,7 +14,46 @@ const titleColorMap: Record<string, string> = {
   red: "text-red-400 group-hover:text-green-400",
 };
 
+function SkillItemRow({ label, usedIn }: { label: string; usedIn?: string[] }) {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  if (!usedIn || usedIn.length === 0) {
+    return (
+      <li className="flex items-center gap-2">
+        <span className="text-green-500">✓</span>
+        {label}
+      </li>
+    );
+  }
+
+  return (
+    <li
+      className="relative flex items-center gap-2 cursor-default"
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
+    >
+      <span className="text-green-500">✓</span>
+      <span className="border-b border-dotted border-gray-600 hover:border-green-500 hover:text-green-400 transition-colors">
+        {label}
+      </span>
+      {showTooltip && (
+        <div className="absolute left-0 bottom-full mb-2 z-10 px-3 py-2 rounded bg-gray-800 border border-gray-700 shadow-lg text-xs whitespace-nowrap">
+          <span className="text-gray-500">Used in: </span>
+          {usedIn.map((project, i) => (
+            <span key={project}>
+              <span className="text-green-400">{project}</span>
+              {i < usedIn.length - 1 && <span className="text-gray-600">, </span>}
+            </span>
+          ))}
+        </div>
+      )}
+    </li>
+  );
+}
+
 export function Skills() {
+  const portfolio = usePortfolio();
+
   return (
     <section id="skills" className="scroll-mt-20">
       <motion.div
@@ -44,10 +84,7 @@ export function Skills() {
             </div>
             <ul className="space-y-2 text-sm">
               {category.items.map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  {item}
-                </li>
+                <SkillItemRow key={item.label} label={item.label} usedIn={item.usedIn} />
               ))}
             </ul>
           </motion.div>

@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Download, FileJson, Github, Linkedin, Mail } from "lucide-react";
 
 import { TerminalPrompt } from "@/components/terminal/TerminalPrompt";
-import { portfolio } from "@/data/portfolio";
+import { usePortfolio } from "@/context/LanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { downloadResumeJson } from "@/lib/resumeJson";
 
 export function Contact() {
+  const portfolio = usePortfolio();
+  const { language } = useLanguage();
+
   const socialLinks = [
     {
       icon: Mail,
@@ -105,6 +110,32 @@ export function Contact() {
             );
           })}
         </div>
+
+        {/* Download actions */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-gray-800/50 print:hidden"
+        >
+          <button
+            type="button"
+            onClick={() => window.print()}
+            className="flex items-center gap-2 px-3 py-2 rounded border border-gray-700 hover:border-green-500/50 text-gray-400 hover:text-green-400 transition-colors text-xs font-mono cursor-pointer"
+          >
+            <Download className="w-3.5 h-3.5" />
+            {language === "no" ? "Last ned PDF" : "Download PDF"}
+          </button>
+          <button
+            type="button"
+            onClick={() => downloadResumeJson(portfolio, language)}
+            className="flex items-center gap-2 px-3 py-2 rounded border border-gray-700 hover:border-green-500/50 text-gray-400 hover:text-green-400 transition-colors text-xs font-mono cursor-pointer"
+          >
+            <FileJson className="w-3.5 h-3.5" />
+            resume.json ({language.toUpperCase()})
+          </button>
+        </motion.div>
       </motion.div>
     </section>
   );

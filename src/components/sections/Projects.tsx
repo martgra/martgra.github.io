@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 
 import { TerminalPrompt } from "@/components/terminal/TerminalPrompt";
-import { portfolio } from "@/data/portfolio";
+import { usePortfolio } from "@/context/LanguageContext";
 import { cn } from "@/lib/utils";
 
 const tagColorMap: Record<string, string> = {
@@ -16,6 +16,8 @@ const tagColorMap: Record<string, string> = {
 };
 
 export function Projects() {
+  const portfolio = usePortfolio();
+
   return (
     <section id="projects" className="scroll-mt-20">
       <motion.div
@@ -41,7 +43,7 @@ export function Projects() {
                 <span className="text-xs text-gray-500 font-mono">{project.meta}</span>
               </div>
               <p className="text-gray-400 text-sm mb-4">{project.description}</p>
-              <div className="flex gap-3 text-xs">
+              <div className="flex flex-wrap items-center gap-3 text-xs">
                 {project.tags.map((tag) => (
                   <span
                     key={tag.label}
@@ -50,6 +52,20 @@ export function Projects() {
                     {tag.label}
                   </span>
                 ))}
+                {project.relatedExperience && project.relatedExperience.length > 0 && (
+                  <>
+                    <span className="text-gray-700">|</span>
+                    <span className="text-gray-600">
+                      &#x2190;{" "}
+                      {project.relatedExperience.map((ref, i) => (
+                        <span key={ref}>
+                          <span className="text-gray-500">{ref}</span>
+                          {i < project.relatedExperience!.length - 1 && ", "}
+                        </span>
+                      ))}
+                    </span>
+                  </>
+                )}
               </div>
             </>
           );

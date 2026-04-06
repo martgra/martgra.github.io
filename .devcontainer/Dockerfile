@@ -29,6 +29,13 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | b
 # Add Node.js to PATH
 ENV PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
+# Install Bun
+RUN curl -fsSL https://bun.sh/install | bash && \
+    echo 'export PATH="$HOME/.bun/bin:$PATH"' >> /home/${USERNAME}/.zshrc && \
+    echo 'export PATH="$HOME/.bun/bin:$PATH"' >> /home/${USERNAME}/.bashrc
+ENV BUN_INSTALL=/home/vscode/.bun
+ENV PATH=$BUN_INSTALL/bin:$PATH
+
 # Configure zsh history persistence (using zsh's precmd instead of bash PROMPT_COMMAND)
 RUN echo 'export HISTFILE=/home/vscode/commandhistory/.zsh_history' >> /home/${USERNAME}/.zshrc \
     && echo 'export HISTSIZE=10000' >> /home/${USERNAME}/.zshrc \

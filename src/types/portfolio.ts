@@ -2,6 +2,7 @@ export interface PortfolioMeta {
   name: string;
   tagline: string;
   description: string;
+  now: string;
 }
 
 export interface HeaderSection {
@@ -25,12 +26,18 @@ export interface FooterSection {
 export interface AboutSection {
   command: string;
   paragraphs: string[];
+  languages: { language: string; level: string }[];
+}
+
+export interface SkillItem {
+  label: string;
+  usedIn?: string[];
 }
 
 export interface SkillCategory {
   title: string;
   color: string;
-  items: string[];
+  items: SkillItem[];
 }
 
 export interface SkillsSection {
@@ -48,6 +55,7 @@ export interface Project {
   meta: string;
   description: string;
   tags: ProjectTag[];
+  relatedExperience?: string[];
   url?: string;
   github?: string;
 }
@@ -55,6 +63,38 @@ export interface Project {
 export interface ProjectsSection {
   command: string;
   items: Project[];
+}
+
+export interface ExperienceEntry {
+  company: string;
+  project: string;
+  role: string;
+  period: string;
+  description: string;
+  highlights: string[];
+  technologies: string[];
+  internal?: boolean;
+}
+
+export interface ExperienceSection {
+  command: string;
+  employer: {
+    name: string;
+    period: string;
+    description: string;
+  };
+  items: ExperienceEntry[];
+}
+
+export interface EducationEntry {
+  degree: string;
+  institution: string;
+  years: string;
+}
+
+export interface EducationSection {
+  command: string;
+  items: EducationEntry[];
 }
 
 export interface ContactSection {
@@ -77,7 +117,9 @@ export interface Portfolio {
   hero: HeroSection;
   about: AboutSection;
   skills: SkillsSection;
+  experience: ExperienceSection;
   projects: ProjectsSection;
+  education: EducationSection;
   contact: ContactSection;
   footer: FooterSection;
   nav: NavItem[];
